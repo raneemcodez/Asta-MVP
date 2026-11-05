@@ -1,36 +1,156 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Asta's Preparation Dashboard
+
+A responsive training dashboard designed to help Asta organize and track his preparation for the battle against Lucifero.
+
+The project focuses on a simple and clear experience: managing three training tasks and monitoring overall preparation progress through a visual progress indicator.
+
+## About the Project
+
+Asta needs a clear way to organize his training because his preparation notes and tasks are scattered.
+
+This dashboard provides a centralized view of his training plan, helping him understand what needs to be completed and how much of the plan is finished.
+
+**Important:** The progress percentage represents completion of the training plan. It does not represent Asta's probability of defeating Lucifero.
+
+## Features
+
+- Responsive dashboard for desktop and mobile screens.
+- Three predefined training tasks:
+  - Sword Control
+  - Physical Endurance
+  - Team Coordination
+- Mark tasks as completed or undo completion.
+- Automatically updated completed-task count.
+- Dynamic progress percentage from 0% to 100%.
+- Accessible task controls and progress indicator.
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Stitch MCP for design exploration and refinement
+- Git and GitHub for version control
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/raneemcodez/Asta-MVP.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd asta-mvp
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Run the Development Server
+
+Start the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Run Project Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Run ESLint:
 
-## Learn More
+```bash
+npm run lint
+```
 
-To learn more about Next.js, take a look at the following resources:
+Create a production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```text
+asta-mvp/
+├── app/
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── task-data.ts
+│   ├── components/
+│   │   └── preparation-dashboard.tsx
+│   └── poc/
+│       └── page.tsx
+├── docs/
+│   ├── PRD.md
+│   ├── DESIGN.md
+│   ├── MCP.md
+│   ├── POC.md
+│   ├── REVIEW.md
+│   └── evidence/
+├── public/
+├── README.md
+└── package.json
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Progress Logic
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The dashboard uses a `Set` of completed task IDs as its single source of truth.
+
+- Completing a task adds its ID to the Set.
+- Undoing a task removes its ID.
+- The completed task count is derived from the Set size.
+- The progress percentage is calculated using:
+
+  `Progress = (Completed Tasks / Total Tasks) × 100`
+
+The result is rounded to the nearest whole number.
+
+The dashboard starts at 0/3, and progress resets when the page is refreshed.
+
+## Limitations
+
+This project is a front-end MVP with a deliberately limited scope.
+
+- No authentication or user accounts.
+- No backend or database.
+- Task progress is not saved after refreshing the page.
+- Tasks are predefined and cannot be added or deleted.
+- No notifications or external integrations.
+
+These limitations are intentional and keep the project focused on its core functionality.
+
+## Documentation
+
+Additional project documentation and supporting evidence are available here:
+
+- [Product Requirements Document](docs/PRD.md)
+- [Design Decisions](docs/DESIGN.md)
+- [MCP Integration and Fallback](docs/MCP.md)
+- [Proof of Concept](docs/POC.md)
+- [Engineering Review](docs/REVIEW.md)
+- [Design Evidence and Screenshots](docs/evidence/)
+
+## Author
+
+**Raneem Mohammad Alrefaie**

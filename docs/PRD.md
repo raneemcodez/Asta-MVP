@@ -180,6 +180,8 @@ The following features are explicitly excluded from this version:
 - Analytics, reports, or training history.
 - External APIs or integrations.
 
+**Development note:** The `/poc` route was an isolated Proof of Concept used during development to test task completion and progress calculations. It was not part of the final user-facing MVP scope.
+
 ## 12. Scope Summary
 
 The first version is limited to one responsive dashboard containing three predefined tasks. Asta can toggle each task between incomplete and complete. The dashboard calculates and displays the completed/total count, percentage, and progress bar from those task states.

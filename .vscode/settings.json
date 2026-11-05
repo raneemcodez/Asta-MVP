@@ -9,7 +9,6 @@
       "**/tsconfig*": true,
 
       "**/postcss*": true,
-      "**/README*": true,
       "**/.gitignore": true,
       "**/next.config*": true,
 
